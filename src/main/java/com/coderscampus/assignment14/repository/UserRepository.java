@@ -1,7 +1,7 @@
 package com.coderscampus.assignment14.repository;
 
+import java.util.LinkedHashSet;
 import java.util.Set;
-import java.util.TreeSet;
 
 import org.springframework.stereotype.Component;
 
@@ -9,14 +9,13 @@ import com.coderscampus.assignment14.dto.User;
 
 @Component
 public class UserRepository {
-private Set<User> users = new TreeSet<>();
+private Set<User> users = new LinkedHashSet<>();
 	
 	public User save (User user) {
 		if (users.size() == 0) {
 			user.setId(1L);
 		} else {
-			User lastUser = ((TreeSet<User>)users).last();
-			user.setId(lastUser.getId() + 1L);
+			user.setId(users.size() + 1L);
 		}
 		users.add(user);
 		return user;
