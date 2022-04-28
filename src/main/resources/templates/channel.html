@@ -3,7 +3,7 @@
 	<head>
 		<title th:text="${channel.name}"></title>
 		<script th:inline="javascript">
-		    var channelId = /*[[${channel.channelId}]]*/null;
+		    var channelId = [[${channel.channelId}]] 
 			var user = sessionStorage.getItem("user")
 			if (user == null) {
 				window.location.href = '/welcome'

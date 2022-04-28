@@ -26,7 +26,7 @@ public class ChannelController {
 		return "redirect:/welcome";
 	}
 	
-	@GetMapping("/channels/{channelId}")
+	@GetMapping("/channels/{channelId}") 	
 	public String getChannel(ModelMap model, @PathVariable Long channelId) {
 		Channel channel = channelService.findChannelById(channelId);
 		List<Message> messagesByChannel = messageService.getMessagesByChannel(channelId);
@@ -41,5 +41,12 @@ public class ChannelController {
 		List<Channel> channels = channelService.findAll();
 		model.put("channels", channels);
 		return "welcome";
+	}
+	
+	@GetMapping("/channel/{name}")
+	public String getNewChannel(ModelMap model, @PathVariable String name) {
+		Channel newChannel = channelService.newChannel(name);
+		model.put("channel", newChannel);
+		return "channel";
 	}
 }

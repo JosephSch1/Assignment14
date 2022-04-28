@@ -20,4 +20,8 @@ public class ChannelService {
 	public List<Channel> findAll() {
 		return channelRepo.findAll();
 	}
+	
+	public Channel newChannel(String name) {
+		return channelRepo.newChannel(name);
+	}
 }
